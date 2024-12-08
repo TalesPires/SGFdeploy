@@ -29,14 +29,14 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','.now.sh']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'gerenciamento',
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,7 +128,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "gerenciamento/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'gerenciamento/static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 
 # Default primary key field type
