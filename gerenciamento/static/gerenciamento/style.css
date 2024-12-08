@@ -1,0 +1,96 @@
+.mx-auto {
+    opacity: 0.7;
+    margin-top: 11%;
+}
+
+.btn-group {
+    width: 13%; 
+    height: 100px;
+}
+.btn {
+    width: 13%; 
+    height: 100px;
+}
+
+.dropdown-menu{
+    width: 100%;
+}
+
+.container {
+    max-width: 900px;
+}
+.ms-2 {
+    font-size: larger;
+}
+
+.btn-pequeno{  
+    padding: 6px 25px;   
+    font-size: 15px;     
+    height: auto;        
+    width: auto;
+}
+
+.scrollable-menu {
+    max-height: 300px;  
+    overflow-y: auto;   
+    position: relative;
+}
+
+
+.accordion-item {
+    margin-bottom: 0.5rem;  
+}
+
+
+.atributos{
+    color: #495891; 
+    font-weight: 500
+}
+
+.accordion{
+    --bs-accordion-btn-bg: #b7b7b7 !important;
+    --bs-accordion-active-bg: #b7b7b7 !important;
+    --bs-accordion-btn-icon-width: 18px !important;
+    --bs-accordion-btn-padding-y: 8px !important;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.20rem rgb(255, 255, 255) !important;
+}
+
+.branco{
+    color: white !important;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.pesquisa{
+    width: 320px !important; 
+}
+
+.card-header{
+    background-color: #b7b7b7 !important;
+}
+
+.card{
+    --bs-card-border-width: 4px !important;
+    --bs-card-border-color: #b7b7b7 !important;
+    --bs-card-inner-border-radius: none !important;
+}
+
+.erbuttons{
+    height: auto;
+    width: auto;
+    font-size: 15px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.esquerda{
+    margin-left: 8% !important;
+}
+
+.direita{
+    margin-right: 8% !important;
+}

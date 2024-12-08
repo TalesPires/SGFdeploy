@@ -1,0 +1,17 @@
+{% extends 'gerenciamento/base.html' %}
+
+{% block content %}
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Pagina de Sucesso</title>
+
+<div class="container mt-5">
+    <h2>Operação realizada com sucesso!</h2>
+    <a href="{% url 'gerenciamento:index' %}">Retornar a pagina inicial<a>
+</div>
+
+{% endblock content %}
+

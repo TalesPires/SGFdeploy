@@ -1,0 +1,68 @@
+{% extends 'gerenciamento/base/base.html' %}
+
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Cadastro do Frete</title>
+
+<div class="container">
+    <div class="card mt-4 shadow-lg">
+        <div class="card-header text-white text-center">
+            <h2>CADASTRAR FRETE</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'gerenciamento:cadastrarf' %}" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_cpf_motorista" style="color: #6a708a; font-weight: 500;">Cadastro de Pessoa Física (CPF)</label>
+                        {% bootstrap_field form.cpf_motorista show_label=False show_errors=True placeholder="62005253501" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_renavam" style="color: #6a708a; font-weight: 500;">Renavam</label>
+                        {% bootstrap_field form.renavam show_label=False show_errors=True placeholder="71353255466" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_data_chegada" style="color: #6a708a; font-weight: 500;">Data de Chegada</label>
+                        {% bootstrap_field form.data_chegada show_label=False show_errors=True %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_data_saida" style="color: #6a708a; font-weight: 500;">Data de Saida</label>
+                        {% bootstrap_field form.data_saida show_label=False show_errors=True %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_distancia_rodagem" style="color: #6a708a; font-weight: 500;">Distancia de Rodagem (KM)</label>
+                        {% bootstrap_field form.distancia_rodagem show_label=False show_errors=True placeholder="500" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_valor_frete" style="color: #6a708a; font-weight: 500;">Valor do Frete</label>
+                        {% bootstrap_field form.valor_frete show_label=False show_errors=True placeholder="2000.00" %}
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-pequeno">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

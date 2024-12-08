@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>`
+    {% load static %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>Tela Inicial</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'gerenciamento/style.css'%}" rel="stylesheet">
+</head>
+<body>
+    <div class="btn-group mt-4 esquerda shadow">
+        <button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Motorista
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:cadastrarm' %}">Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:pesquisarm' %}">Pesquisar</a></li>
+            <li><hr class="dropdown-divider d-flex justify-content-center"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:editarm' %}">Editar</a></li>
+            <li><hr class="dropdown-divider d-flex justify-content-center"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:excluirm' %}">Excluir</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group ms-2 mt-4 shadow">
+        <button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cartão
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:cadastrarc' %}">Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:pesquisarc' %}">Pesquisar</a></li>
+            <li><hr class="dropdown-divider "></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:editarc' %}">Editar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="{% url 'gerenciamento:excluirc' %}">Excluir</a></li>
+        </ul>
+    </div>
+    
+    <div class="btn-group ms-2 mt-4">
+        <button class="btn btn-secondary btn-lg shadow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Veículo
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Pesquisar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Editar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Excluir</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group ms-2 mt-4" >
+        <button class="btn btn-secondary btn-lg shadow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tipo de Veículo
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Pesquisar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Editar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Excluir</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group ms-2 mt-4">
+        <button class="btn btn-secondary btn-lg shadow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Frete
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Pesquisar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Editar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Excluir</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group ms-2 mt-4 direita">
+        <button class="btn btn-secondary btn-lg shadow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pagamento
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Cadastrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Pesquisar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Editar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item d-flex justify-content-center" href="#">Excluir</a></li>
+        </ul>
+    </div>
+    
+    <div class="d-flex align-items-center">
+
+    <img width="400" src="{% static 'gerenciamento/OPL-Fundo-Branco-1.png' %}" class="mx-auto" alt="logo">
+    
+    </div>
+    
+    <div class="container-sm">
+        <div class=" d-flex position-absolute bottom-0 start-0">
+            <nav class="navbar">
+                <div class="container">    
+                    <ul class="nav-item dropup mt-4">
+                        <a class="btn btn-secondary dropdown-toggle btn-pequeno shadow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                        {{user.nome_usuario}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'gerenciamento:password_reset' %}">Redefinir Senha</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'gerenciamento:logout' %}">Sair</a></li>
+                        </ul>
+                    </ul>
+
+                    <img class="mt-2 mb-3" width="90" height="45" src="{% static 'gerenciamento/user-solid.svg' %}" alt="pfoto">
+                
+                    <p style="font-size: larger;">
+                        Seja bem vindo, {{user.nome_usuario}}! <br>  
+                        <strong>SISTEMA DE GERENCIAMENTO DE FRETES
+                    </p>
+                    
+                </div>
+                </nav>
+            
+        </div>
+    </div>
+</body>
+</html>

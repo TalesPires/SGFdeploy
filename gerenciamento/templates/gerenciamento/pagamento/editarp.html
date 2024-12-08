@@ -1,0 +1,95 @@
+{% extends 'gerenciamento/base/base.html' %}
+
+{% block content %}
+
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Edição do Pagamento</title>
+
+<div class="container atributos">
+    <div class="card mt-4 shadow-lg">
+        <div class="card-header text-white text-center">
+            <h2 class="text-center">EDITAR PAGAMENTO</h2>
+        </div>
+        <div class="card-body">
+
+            <nav class="navbar-sm" style="background-color: #b7b7b7;">
+                <div class="container-fluid mb-2 d-flex justify-content-center">
+                    <input type="text" id="accordion_search_bar" class="form-control pesquisa" placeholder="Carreta...">
+                </div>
+            </nav>
+            
+            <div class="scrollable-menu" id="scrollable-menu" data-bs-spy="scroll" data-bs-target="#employeeAccordion" data-bs-offset="0" tabindex="0">
+                <div class="accordion accordion-flush" id="employeeAccordion">
+                    {% for pagamento in pagamentos %}
+                    <div class="accordion-item AccordionContainer" id="pagamento-{{ forloop.counter }}">
+                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                            <div class="branco">  {{ pagamento.id_pagamento}} - Fiscal {{ pagamento.cpf_fiscal.nome_usuario }} - Motorista {{ pagamento.id_frete.cpf_motorista.nome }}</div>
+                            </button>
+                        </h2>
+                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#employeeAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><span class="atributos">Cadastro de Pessoa Fisica (CPF) do Fiscal</span><br>{{ pagamento.cpf_fiscal }} - {{ pagamento.cpf_fiscal.nome_usuario }}</p>
+                                        <p><span class="atributos">ID do Frete</span><br>{{ pagamento.id_frete }} - {{ pagamento.id_frete.cpf_motorista.nome }} - {{ pagamento.id_frete.renavam }} </p>
+                                        <p><span class="atributos">Data de Pagamento</span><br>{{ pagamento.data_pagamento }}</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p><span class="atributos">Taxa de Acrescimo</span><br>{{ pagamento.taxa_acrescimo }}</p>
+                                        <p><span class="atributos">Taxa de Desconto</span><br>{{ pagamento.taxa_desconto }}</p>
+                                        <p><span class="atributos">Status de Pagamento</span><br>{{ pagamento.status_pagamento }} - {{ pagamento.get_status_pagamento_display }}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p><span class="atributos">Valor Calculado</span><br>{{ pagamento.valor_calculado }}</p>
+                                        <a type="button" href="{% url 'gerenciamento:formeditarp' pagamento.id_pagamento%}" class="btn btn-success btn-pequeno">EDITAR</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var search = document.getElementById('accordion_search_bar');
+    var accordions = document.querySelectorAll('.AccordionContainer');
+
+    // Show content on click
+    accordions.forEach(function(accordion) {
+        accordion.querySelector('button').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('active');
+        });
+    });
+
+    // Apply search
+    search.addEventListener('input', function() {
+        var searchText = search.value.toLowerCase();
+        accordions.forEach(function(accordion) {
+            if (accordion.innerText.toLowerCase().includes(searchText)) {
+                accordion.style.display = 'block';
+            } else {
+                accordion.style.display = 'none';
+            }
+        });
+    });
+
+    // Activate ScrollSpy
+    var scrollElement = document.getElementById('scrollable-menu');
+    new bootstrap.ScrollSpy(scrollElement, {
+        target: '#employeeAccordion'
+    });
+</script>
+
+
+
+{% endblock content %}

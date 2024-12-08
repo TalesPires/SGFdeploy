@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - OPL Logística</title>
+    <link href="{% static 'gerenciamento/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center" style="background-image: url('{% static 'gerenciamento/marcin-jozwiak-kGoPcmpPT7c-unsplash.jpg' %}'); background-size: cover;">
+    <div class="row w-100 h-100">
+        <!-- Left Side (Background) -->
+        <div class="col-md-7 d-none d-md-block">
+            <!-- Background image fills the left side of the screen -->
+        </div>
+        <!-- Right Side (Login Card) -->
+        <div class="col-md-5 d-flex align-items-center justify-content-center">
+            <div class="card login-card p-4 h-73" style="width: 62%;">
+                <div class="text-center mb-4 mt-4">
+                    <img src="{% static 'gerenciamento/OPL-Fundo-Branco-1.png' %}" alt="OPL Logística" class="img-fluid" width="250">
+                </div>
+                <h2 class="text-center mb-3 mt-3" style="color: #6a708a; font-weight:bold;">LOGIN</h2>
+                <form method="POST" action="{% url 'gerenciamento:login' %}">
+                    {% csrf_token %}
+
+                    {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group mt-2">
+                        <label for="nome_usuario">Usuário</label>
+                        <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" placeholder="Administrador">
+                    </div>
+                    <div class="form-group mb-1">
+                        <label for="password">Senha</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="••••••••">
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword" style="height:50%;">
+                                <i class="fa fa-eye" style="max-width: 50px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="{% url 'gerenciamento:password_reset' %}" style="color: #6a708a;">Esqueci minha senha</a>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success btn-pequeno">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("togglePassword").addEventListener("click", function() {
+        const passwordField = document.getElementById("password");
+        const icon = this.querySelector("i");
+
+        // Toggle between password and text
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends 'gerenciamento/base/base.html' %}
+
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Edição da Senha</title>
+
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-header text-white text-center">
+            <h2>EDITAR SENHA</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'gerenciamento:redefinir_senha' user.email %}" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <p>As senhas não correspondem, tente novamente.</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_nome" style="color: #6a708a; font-weight: 500;">Nome Completo</label>
+                        <input type="text" id="id_nome" value="{{ form.nome_usuario.value }}" class="form-control" placeholder="620.052.535-01" disabled>
+                        <input type="hidden" name="{{ form.nome_usuario.name }}" value="{{ form.nome_usuario.value }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_cpf" style="color: #6a708a; font-weight: 500;">Cadastro de Pessoa Física (CPF)</label>
+                        <input type="text" id="id_cpf" value="{{ form.cpf_fiscal.value }}" class="form-control" placeholder="620.052.535-01" disabled>
+                        <input type="hidden" name="{{ form.cpf_fiscal.name }}" value="{{ form.cpf_fiscal.value }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_email" style="color: #6a708a; font-weight: 500;">Email</label>
+                        <input type="text" id="id_email" value="{{ form.email.value }}" class="form-control" placeholder="620.052.535-01" disabled>
+                        <input type="hidden" name="{{ form.email.name }}" value="{{ form.email.value }}">
+                    </div>
+                    <div class="col-md-6 mb-1">
+                        <label for="id_password" style="color: #6a708a; font-weight: 500;">Senha</label>
+                        <input type="password" class="form-control" id="id_password" name="password" placeholder="*****">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="id_password_confirm" style="color: #6a708a; font-weight: 500;">Confirme a senha</label>
+                        <input type="password" class="form-control" id="id_password_confirm" name="password_confirm" placeholder="*****">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-pequeno">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

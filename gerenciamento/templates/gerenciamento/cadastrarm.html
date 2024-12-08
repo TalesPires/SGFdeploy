@@ -1,0 +1,69 @@
+{% extends 'gerenciamento/base.html' %}
+
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Cadastro do Motorista</title>
+
+<div class="container">
+    <div class="card mt-4 shadow-lg">
+        <div class="card-header text-white text-center">
+            <h2>CADASTRAR MOTORISTA</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'gerenciamento:cadastrarm' %}" novalidate>
+                {% csrf_token %}
+                
+                <!-- Exibir erros globais de formulário, se houver -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_nome" style="color: #6a708a; font-weight: 500;">Nome Completo</label>
+                        {% bootstrap_field form.nome show_label=False show_errors=True placeholder="Antônio Fonseca Novais" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_cpf" style="color: #6a708a; font-weight: 500;">Cadastro de Pessoa Física (CPF)</label>
+                        {% bootstrap_field form.cpf_motorista show_label=False show_errors=True placeholder="62005253501" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_telefone" style="color: #6a708a; font-weight: 500;">Telefone</label>
+                        {% bootstrap_field form.telefone show_label=False show_errors=True placeholder="77981371290" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_cnh" style="color: #6a708a; font-weight: 500;">Registro da Carteira Nacional de Habilitação (CNH)</label>
+                        {% bootstrap_field form.registro_cnh show_label=False show_errors=True placeholder="76211889218" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_endereco" style="color: #6a708a; font-weight: 500;">Endereço</label>
+                        {% bootstrap_field form.endereco show_label=False show_errors=True placeholder="Avenida Lapa, 1001" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_dataAdmissao" style="color: #6a708a; font-weight: 500;">Data de Admissão</label>
+                        {% bootstrap_field form.data_admissao show_label=False show_errors=True %}
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-pequeno">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

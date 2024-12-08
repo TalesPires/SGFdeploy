@@ -1,0 +1,57 @@
+{% extends 'gerenciamento/base/base.html' %}
+
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Cadastro do Cartão</title>
+
+<div class="container">
+    <div class="card mt-4 shadow-lg">
+        <div class="card-header text-white text-center">
+            <h2>CADASTRAR CARTÃO</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'gerenciamento:cadastrarc' %}" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_agencia" style="color: #6a708a; font-weight: 500;">Agência</label>
+                        {% bootstrap_field form.agencia show_label=False show_errors=True placeholder="01231" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_cpf" style="color: #6a708a; font-weight: 500;">Cadastro de Pessoa Física (CPF)</label>
+                        {% bootstrap_field form.cpf_motorista show_label=False show_errors=True placeholder="62005253501" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_numero_conta" style="color: #6a708a; font-weight: 500;">Numero da Conta</label>
+                        {% bootstrap_field form.numero_conta show_label=False show_errors=True placeholder="456781" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_validade" style="color: #6a708a; font-weight: 500;">Validade</label>
+                        {% bootstrap_field form.validade show_label=False show_errors=True %}
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-pequeno">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static%}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'gerenciamento/style.css'%}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <a href="{% url 'gerenciamento:index' %}"><img class="ms-3" width="125" src="{% static 'gerenciamento/OPL-Fundo-Branco-1.png' %}" alt="logotipo"></a>
+            </div>
+
+            <div class="d-flex align-items-center me-1 ">
+                <img width="28" src="{% static 'gerenciamento/user-solid.svg' %}" alt="pfoto">
+                <p class="ms-3 mt-3 me-3" style="font-size: 142%;">{{user.nome_usuario}}</p>
+            </div>
+        </div>
+    {% block content %}{% endblock content %}
+</body>
+</html>

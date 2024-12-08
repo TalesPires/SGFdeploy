@@ -1,0 +1,82 @@
+{% extends 'gerenciamento/base/base.html' %}
+
+{% block content %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<title>Edição do Veículo</title>
+
+<div class="container">
+    <div class="card mt-4 shadow-lg">
+        <div class="card-header text-white text-center">
+            <h2>EDITAR VEÍCULO</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'gerenciamento:formeditarv' veiculo.renavam%}" novalidate>
+                {% csrf_token %}
+                
+                <!-- Exibir erros globais de formulário, se houver -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_renavam" style="color: #6a708a; font-weight: 500;">Renavam</label>
+                        <input type="text" id="id_renavam" value="{{ form.renavam.value }}" class="form-control" disabled>
+                        <input type="hidden" name="{{ form.renavam.name }}" value="{{ form.renavam.value }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_tipo" style="color: #6a708a; font-weight: 500;">Tipo de veiculo</label>
+                        {% bootstrap_field form.id_tipo show_label=False show_errors=True placeholder="Caminhão" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_placa" style="color: #6a708a; font-weight: 500;">Placa</label>
+                        {% bootstrap_field form.placa show_label=False show_errors=True placeholder="JQL8029" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_marca" style="color: #6a708a; font-weight: 500;">Marca</label>
+                        {% bootstrap_field form.marca show_label=False show_errors=True placeholder="Scania" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_cor" style="color: #6a708a; font-weight: 500;">Cor</label>
+                        {% bootstrap_field form.cor show_label=False show_errors=True placeholder="Preto" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_modelo" style="color: #6a708a; font-weight: 500;">Modelo</label>
+                        {% bootstrap_field form.modelo show_label=False show_errors=True placeholder="R 450" %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="id_ano" style="color: #6a708a; font-weight: 500;">Ano</label>
+                        {% bootstrap_field form.ano show_label=False show_errors=True placeholder="2010" %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_cor" style="color: #6a708a; font-weight: 500;">RNTRC</label>
+                        {% bootstrap_field form.rntrc show_label=False show_errors=True placeholder="45876925" %}
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-pequeno">SALVAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
