@@ -29,7 +29,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hamishwillee.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['talesassis.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -158,4 +158,4 @@ STORAGES = {
     },
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://hamishwillee.pythonanywhere.com']
+CSRF_TRUSTED_ORIGINS = ['https://talesassis.pythonanywhere.com']
