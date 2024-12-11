@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'TalesPires$default',
         'USER': 'TalesPires',
         'PASSWORD': 'dlwlrmaio',
-        'HOST':'TalesPires$default',
+        'HOST':'TalesPires.mysql.pythonanywhere-services.com',
     }
 }
 
