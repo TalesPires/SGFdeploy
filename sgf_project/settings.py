@@ -83,11 +83,10 @@ WSGI_APPLICATION = 'sgf_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sgf',
-        'USER': 'root',
-        'PASSWORD': 'admin',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'NAME': 'TalesPires$default',
+        'USER': 'TalesPires',
+        'PASSWORD': 'dlwlrmaio',
+        'HOST':'TalesPires$default',
     }
 }
 
