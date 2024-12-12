@@ -86,11 +86,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'TalesAssis$default',
         'USER': 'TalesAssis',
-        'PASSWORD': str(os.getenv('DB_PASS')),
+        'PASSWORD': 'dlwlrmaio',
         'HOST':'TalesAssis.mysql.pythonanywhere-services.com',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
