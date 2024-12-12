@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'sgf_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': str(os.getenv('DB_NAME')),
-        'USER': str(os.getenv('DB_USER')),
+        'NAME': 'TalesAssis$default',
+        'USER': 'TalesAssis',
         'PASSWORD': str(os.getenv('DB_PASS')),
-        'HOST':str(os.getenv('DB_HOST')),
+        'HOST':'TalesAssis.mysql.pythonanywhere-services.com',
     }
 }
 
